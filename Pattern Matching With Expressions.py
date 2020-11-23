@@ -1,5 +1,5 @@
 
-#Finding patterns of text with irregullar expressions.
+# Finding patterns of text with irregullar expressions.
 
 def isPhoneNumber(text):
     if len(text) != 12:
@@ -31,14 +31,32 @@ def RecognizePhoneNumber(text):
 
 RecognizePhoneNumber(tex)        
 
-#Finding pattern of text in regular expressions
+# Finding pattern of text in regular expressions
 
-#using re library
-#create and match regex object
+# using re library
+# create and match regex object
 
 import re
 
 is_phone = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')
 mo = is_phone.search('My number is 123-123-1234')
 print("Phone is: " + mo.group())
+
+is_phone= re.compile(r'(\d\d\d)-(\d\d\d-\d\d\d\d)')
+mo = is_phone.search("My number is 415-555-4242.")
+print(mo.group(1))
+
+          ## Checking for Country Numbers
+
+codes = {'92':"Pakistan", '93':'India'       }
+is_phone = re.compile(r'(\d\d)-(\d\d\d)-(\d\d\d\d\d\d\d)')
+
+inp = input("Enter Text")
+
+mo= is_phone.search(str(inp))
+for code in codes:
+    if code == mo.group(1):
+        print(f"Phone Number Detected! \n {mo.group()} \n This is {codes[code]} number \n Call?")
+    else:
+         continue
 
